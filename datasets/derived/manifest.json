@@ -1,0 +1,39 @@
+{
+  "version": "2.0.0",
+  "builtOn": "15 November 2026",
+  "files": [
+    "PSI-159_Raw Data_INTNS_21256A4.mdipsug",
+    "PSI-159_Raw Data_21256A4_mfcSetpoints.csv",
+    "PSI data summary Princeton with links.xlsx",
+    "PSI-142_Experimental table_Data Summary Table.csv",
+    "PSI-159_Raw Data_21256B1_data.csv",
+    "PSI-159_Raw Data_ACME_21256B1.mdipsug"
+  ],
+  "b1Rows": 9627,
+  "b1Columns": 36,
+  "a4SetpointRows": 36,
+  "cameraRecords": {
+    "21256A4 · INTNS": 1275,
+    "21256B1 · ACME": 286
+  },
+  "psi142WorkbookSheets": [
+    "data summary",
+    "data ID 1",
+    "data ID 2",
+    "data ID 3",
+    "data ID 4",
+    "data ID 5",
+    "data ID 6",
+    "data ID 7",
+    "data ID 8"
+  ],
+  "psi142DataIds": 8,
+  "notes": [
+    "Raw source files are preserved unchanged under datasets/raw.",
+    "Derived series are sampled for browser rendering and must not be substituted for full-resolution raw files.",
+    "PSI-159 channels are not assigned physical units without a channel dictionary and calibration.",
+    "PSI-142 Data ID 1/2 ozone labels conflict between the uploaded CSV and workbook; neither is selected as authoritative.",
+    "Data ID 6 is kept as raw preview only because the supplied review/update note marks its field mapping unresolved.",
+    "The referenced TIFF/HOBJ image payload files are not included; metadata only is visualised."
+  ]
+}

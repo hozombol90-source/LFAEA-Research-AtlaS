@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1420">
+  <meta name="description" content="Lunar Fire & Aerosol Evidence Atlas — a traceable scientific intelligence dashboard for NASA microgravity combustion research." />
+  <title>LFAEA · Lunar Fire & Aerosol Evidence Atlas</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script defer src="data.js"></script>
+  <script defer src="app.js"></script>
+  <script defer src="app-enhanced.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand-lockup">
+        <div class="brand-mark"><span class="brand-orbit"></span><span class="brand-core"></span></div>
+        <div><div class="brand-name">LFAEA</div><div class="brand-sub">EVIDENCE ATLAS</div></div>
+      </div>
+      <div class="workspace-label">RESEARCH WORKSPACE</div>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        <button class="nav-item active" data-page="overview"><span class="nav-icon">◫</span><span>Overview</span><kbd>01</kbd></button>
+        <button class="nav-item" data-page="library"><span class="nav-icon">▤</span><span>Investigation library</span><kbd>02</kbd></button>
+        <button class="nav-item" data-page="compare"><span class="nav-icon">⇄</span><span>Comparative analysis</span><kbd>03</kbd></button>
+        <button class="nav-item" data-page="data"><span class="nav-icon">⌁</span><span>Data laboratory</span><kbd>04</kbd></button>
+        <button class="nav-item" data-page="data-studio"><span class="nav-icon">▦</span><span>PSI data studio</span><kbd>05</kbd></button>
+        <button class="nav-item" data-page="digital-twin"><span class="nav-icon">◉</span><span>3D combustion lab</span><kbd>06</kbd></button>
+        <button class="nav-item" data-page="assistant"><span class="nav-icon">✳</span><span>Research assistant</span><kbd>07</kbd></button>
+        <button class="nav-item" data-page="method"><span class="nav-icon">◎</span><span>Method &amp; quality</span><kbd>08</kbd></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="side-status"><span class="status-dot"></span><span>STATIC RESEARCH · NO SERVER</span></div>
+        <div class="side-note">Independent student research prototype<br>Not a NASA product or safety system.</div>
+        <div class="side-version"><span>RELEASE</span><strong>v2.1.0</strong></div>
+      </div>
+    </aside>
+
+    <main class="main-shell">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Toggle navigation">☰</button>
+        <div class="topbar-brand-left">
+          <img class="corner-logo corner-logo-space" src="assets/space-glitchers-logo.jpg" alt="Space Glitchers team logo" decoding="async">
+          <div class="breadcrumb"><span>RESEARCH INTELLIGENCE</span><span class="crumb-divider">/</span><strong id="crumbCurrent">OVERVIEW</strong></div>
+        </div>
+        <div class="topbar-brand-right">
+          <div class="top-actions">
+            <span class="data-stamp"><span class="stamp-dot"></span> SOURCE SET · 15 NOV 2026</span>
+            <button class="icon-button" id="sourcesButton" title="Open source register" aria-label="Open source register">↗</button>
+            <button class="profile-chip" id="aboutButton" title="About this prototype">LF</button>
+          </div>
+          <img class="corner-logo corner-logo-atlas" src="assets/lfaea-project-logo.jpg" alt="Lunar Fire and Aerosol Evidence Atlas logo" decoding="async">
+        </div>
+      </header>
+
+      <section class="page active" id="page-overview" aria-labelledby="pageTitle">
+        <div class="hero-row">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-line"></span> COMBUSTION SCIENCE · SPACE HABITAT SAFETY</div>
+            <h1 id="pageTitle">Lunar Fire &amp; Aerosol<br><em>Evidence Atlas.</em></h1>
+            <p class="hero-lede">A traceable intelligence layer over NASA’s microgravity combustion research — connecting experiments, conditions, measurements, and the limits of what can be concluded.</p>
+            <div class="hero-meta"><span class="meta-pill"><i></i> NASA PSI–centred</span><span class="meta-pill">Evidence-first analytics</span><span class="meta-pill">Faculty / research use</span></div>
+          </div>
+          <div class="hero-visual" aria-label="Conceptual scientific visualization of a spherical microgravity flame">
+            <div class="visual-grid"></div><div class="visual-orbit orbit-a"></div><div class="visual-orbit orbit-b"></div>
+            <div class="flame-halo"></div><div class="flame-core"></div>
+            <div class="visual-crosshair x"></div><div class="visual-crosshair y"></div>
+            <div class="visual-label label-top">NON-BUOYANT FLAME FIELD <span>01 / 06</span></div>
+            <div class="visual-label label-bottom"><span class="legend-dot"></span> DIFFUSION-DOMINATED TRANSPORT <b>0g*</b></div>
+            <div class="visual-coord">ISS · CIR / MSG<br>SCHEMATIC VIEW</div>
+          </div>
+        </div>
+
+        <div class="callout-strip">
+          <div class="callout-icon">!</div>
+          <div><strong>Scientific boundary condition</strong><span>This atlas supports research navigation and evidence synthesis. It does not certify materials, predict operational fire outcomes, or provide crew-response instructions.</span></div>
+          <button data-page="method" class="text-link">View methodology <span>→</span></button>
+        </div>
+
+        <div class="section-heading">
+          <div><div class="eyebrow">ATLAS SNAPSHOT</div><h2>Evidence at a glance</h2></div>
+          <div class="section-note">Counts refer to records curated in this prototype, not the total NASA PSI repository.</div>
+        </div>
+        <div class="metric-grid">
+          <article class="metric-card"><div class="metric-top"><span>CURATED STUDY RECORDS</span><span class="metric-icon">▤</span></div><div class="metric-value" id="metricStudies">14</div><div class="metric-foot"><span class="accent-mark"></span> Across five evidence families</div></article>
+          <article class="metric-card"><div class="metric-top"><span>PRIMARY NASA / PSI LINKS</span><span class="metric-icon">↗</span></div><div class="metric-value" id="metricSources">29</div><div class="metric-foot">Persistent records and supporting literature</div></article>
+          <article class="metric-card"><div class="metric-top"><span>DATA QUALITY FLAGS</span><span class="metric-icon warning">△</span></div><div class="metric-value" id="metricFlags">6</div><div class="metric-foot"><span class="warning-text">Visible, not silently corrected</span></div></article>
+          <article class="metric-card"><div class="metric-top"><span>DIRECT PARTIAL-G DATA IN UPLOAD</span><span class="metric-icon">◌</span></div><div class="metric-value">0</div><div class="metric-foot">Lunar-gravity context shown separately</div></article>
+        </div>
+
+        <div class="overview-grid">
+          <section class="panel ranking-panel">
+            <div class="panel-head"><div><div class="eyebrow">EVIDENCE PRIORITISATION</div><h3>What matters for this mission?</h3><p>Rank studies by research question, not by an assumed universal hazard score.</p></div><span class="panel-index">A / 01</span></div>
+            <div class="scenario-control"><label for="scenarioSelect">MISSION / RESEARCH SCENARIO</label><select id="scenarioSelect"></select><span id="scenarioDescription" class="scenario-description"></span></div>
+            <div id="rankingList" class="ranking-list"></div>
+            <div class="rank-foot"><span class="mini-info">i</span> Prioritisation score is an explainable editorial heuristic using relevance, evidence type, data coverage, and metadata completeness. It is not a measured fire-risk score.</div>
+          </section>
+          <section class="panel insight-panel">
+            <div class="panel-head"><div><div class="eyebrow">RESEARCHER’S BRIEF</div><h3>Three findings to keep in view</h3></div><span class="panel-index">B / 02</span></div>
+            <div class="insight-item"><div class="insight-number">01</div><div><strong>Gravity is only one axis.</strong><p>Pressure, oxygen fraction, inert-gas composition, forced flow, sample geometry, and diagnostic method must travel with every comparison.</p><a href="#" data-open-investigation="bass2">Inspect BASS-II evidence →</a></div></div>
+            <div class="insight-item"><div class="insight-number">02</div><div><strong>Smoke is not a single measurand.</strong><p>Smoke-point luminosity, aerosol size moments, soot, and detector response describe different parts of the problem.</p><a href="#" data-open-investigation="samer">Inspect SAME-R evidence →</a></div></div>
+            <div class="insight-item"><div class="insight-number">03</div><div><strong>Missing metadata is a result.</strong><p>PSI-159 voltages remain volts until the correct channel dictionary and calibration are available. The atlas preserves “not computable”.</p><a href="#" data-open-investigation="cfig">Inspect PSI-159 data →</a></div></div>
+          </section>
+        </div>
+
+        <div class="section-heading compact-heading"><div><div class="eyebrow">EVIDENCE COVERAGE</div><h2>From experiment to engineering question</h2></div><button class="text-link" data-page="library">Explore all records <span>→</span></button></div>
+        <div class="coverage-grid">
+          <div class="coverage-card"><div class="coverage-icon">⌁</div><div><strong>Material selection</strong><span>BASS-II · SoFIE · FM² context</span></div><b>01</b></div>
+          <div class="coverage-card"><div class="coverage-icon">◉</div><div><strong>Smoke / aerosol detection</strong><span>SAME-R · MPASS · SAFFIRE</span></div><b>02</b></div>
+          <div class="coverage-card"><div class="coverage-icon">✳</div><div><strong>Extinction mechanisms</strong><span>FLEX · FLEX-2 · SoFIE-MIST</span></div><b>03</b></div>
+          <div class="coverage-card"><div class="coverage-icon">∿</div><div><strong>Model development</strong><span>SPICE · ACME · PSI-142</span></div><b>04</b></div>
+        </div>
+        <div class="page-footer"><span>LFAEA / RESEARCH WORKSPACE</span><span>Independent research prototype · Source links checked 15 Nov 2026</span></div>
+      </section>
+
+      <section class="page" id="page-library" aria-labelledby="libraryTitle">
+        <div class="page-intro"><div class="eyebrow">EVIDENCE CATALOGUE · 02</div><h1 id="libraryTitle">Investigation <em>library.</em></h1><p>Browse research by physical process, mission relevance, evidence grade, and the files actually available for review.</p></div>
+        <div class="library-toolbar">
+          <div class="search-field"><span>⌕</span><input id="librarySearch" type="search" placeholder="Search investigation, material, variable, PSI ID…" autocomplete="off"><kbd>/</kbd></div>
+          <select id="libraryFamily"><option value="all">All evidence families</option></select>
+          <select id="libraryEvidence"><option value="all">All evidence grades</option><option value="A">Grade A · Direct result</option><option value="B">Grade B · Official context</option><option value="C">Grade C · Reprocessed data</option></select>
+          <select id="libraryStatus"><option value="all">All data statuses</option><option value="partial">Partial / selected files</option><option value="record">PSI record available</option><option value="external">External programme context</option><option value="pending">Collection priority</option><option value="conflict">Identifier conflict</option></select>
+        </div>
+        <div class="results-bar"><span id="libraryResultCount">14 investigations</span><span>Sort: <select id="librarySort"><option value="rank">Scenario relevance</option><option value="alpha">A–Z</option><option value="evidence">Evidence strength</option></select></span></div>
+        <div id="libraryGrid" class="investigation-grid"></div>
+        <div class="page-footer"><span>CATALOGUE RECORDS ARE NOT ALL RAW DATASETS</span><span>Open each source record for its original DOI, files, and version history.</span></div>
+      </section>
+
+      <section class="page" id="page-compare" aria-labelledby="compareTitle">
+        <div class="page-intro"><div class="eyebrow">CROSS-INVESTIGATION ANALYSIS · 03</div><h1 id="compareTitle">Compare the <em>conditions.</em></h1><p>Compare up to three studies. Differences in gravity, fuels, geometry, flow, and measurement are treated as scientific constraints — not noise to be averaged away.</p></div>
+        <div class="compare-toolbar"><div><strong>SELECT STUDIES</strong><span>Choose 2–3 records from the curated atlas.</span></div><div id="comparePicker" class="compare-picker"></div></div>
+        <div id="compareOutput" class="compare-output"></div>
+        <div class="method-note"><span class="mini-info">i</span><div><strong>Comparability rule</strong><p>A comparison is “matched” only when key boundary conditions and measurement definitions are available and sufficiently aligned. Unknown or mismatched fields are shown explicitly; no automatic unit conversion is performed without a documented conversion record.</p></div></div>
+        <div class="page-footer"><span>COMPARISON IS NOT CERTIFICATION</span><span>All rows preserve the source-study context.</span></div>
+      </section>
+
+      <section class="page" id="page-data" aria-labelledby="dataTitle">
+        <div class="page-intro"><div class="eyebrow">SOURCE-DERIVED QUANTITATIVE EXPLORER · 04</div><h1 id="dataTitle">Data <em>laboratory.</em></h1><p>Selected descriptive results from the uploaded research package. Every plot carries its measurement definition and caveat.</p></div>
+        <div class="data-tabs" role="tablist" aria-label="Data sets">
+          <button class="data-tab active" data-dataset="spice" role="tab">SPICE · smoke points</button>
+          <button class="data-tab" data-dataset="psi159" role="tab">PSI-159 · time series</button>
+          <button class="data-tab" data-dataset="psi142" role="tab">PSI-142 · workbook</button>
+        </div>
+        <div id="dataContent" class="data-content"></div>
+        <div class="page-footer"><span>DESCRIPTIVE ANALYSIS ONLY</span><span>Uncalibrated source values are not engineering quantities.</span></div>
+      </section>
+
+      <section class="page" id="page-data-studio" aria-labelledby="dataStudioTitle">
+        <div class="page-intro"><div class="eyebrow">RAW DATA OBSERVATORY · 05</div><h1 id="dataStudioTitle">PSI data <em>studio.</em></h1><p>Explore the newly supplied PSI-159 sensor stream, MFC setpoints, camera acquisition metadata, and PSI-142 workbook series. Raw values remain traceable to their uploaded files.</p></div>
+        <div class="studio-kpis">
+          <article class="studio-kpi"><span>PSI-159 B1 ROWS</span><strong id="kpiB1Rows">—</strong><small>21256B1 · raw time series</small></article>
+          <article class="studio-kpi"><span>MEDIAN SAMPLE Δt</span><strong id="kpiB1Dt">—</strong><small>Timestamp-derived · source order preserved</small></article>
+          <article class="studio-kpi"><span>CAMERA RECORDS</span><strong id="kpiCameraRows">—</strong><small>A4 INTNS + B1 ACME metadata</small></article>
+          <article class="studio-kpi"><span>PSI-142 SERIES</span><strong>1–8</strong><small>Workbook Data IDs · ID 6 flagged</small></article>
+        </div>
+        <div class="studio-grid">
+          <section class="panel studio-panel span-two">
+            <div class="studio-panel-head"><div><div class="eyebrow">PSI-159 · 21256B1</div><h3>Raw-channel time series</h3><p>Values are shown as recorded in the source column. No calibration or unit conversion is applied.</p></div><label class="studio-select">CHANNEL<select id="b1ChannelSelect"></select></label></div>
+            <div class="chart-shell chart-large"><canvas id="b1SeriesChart" aria-label="PSI-159 B1 raw channel over elapsed time"></canvas></div>
+            <div id="b1ChannelStats" class="channel-stats"></div>
+            <div class="studio-footnote" id="b1IntegrityNote"></div>
+          </section>
+          <section class="panel studio-panel">
+            <div class="studio-panel-head"><div><div class="eyebrow">PSI-159 · 21256A4</div><h3>MFC setpoints</h3><p>Recorded setpoint voltage against elapsed time.</p></div><span class="micro-badge">VOLTS AS RECORDED</span></div>
+            <div class="chart-shell"><canvas id="a4SetpointChart" aria-label="A4 MFC setpoint voltage chart"></canvas></div>
+            <div class="studio-footnote" id="a4SetpointNote"></div>
+          </section>
+          <section class="panel studio-panel">
+            <div class="eyebrow">CAMERA ACQUISITION · METADATA ONLY</div><h3>Imaging record coverage</h3>
+            <div id="cameraCards" class="camera-cards"></div>
+            <div class="chart-shell chart-small"><canvas id="cameraDeltaChart" aria-label="Camera frame interval metadata"></canvas></div>
+            <div class="studio-footnote">The supplied files contain metadata, not the referenced TIFF/HOBJ image payloads. No flame-image metrics are inferred.</div>
+          </section>
+          <section class="panel studio-panel span-two">
+            <div class="studio-panel-head"><div><div class="eyebrow">PSI-142 · COOL-FLAME WORKBOOK</div><h3>Data ID explorer</h3><p>Workbook column names and units are retained. Each chart represents only the fields available for that Data ID.</p></div><label class="studio-select">DATA ID<select id="psi142IdSelect"><option value="1">Data ID 1</option><option value="2">Data ID 2</option><option value="3">Data ID 3</option><option value="4">Data ID 4</option><option value="5">Data ID 5</option><option value="6">Data ID 6</option><option value="7">Data ID 7</option><option value="8">Data ID 8</option></select></label></div>
+            <div id="psi142Status" class="psi142-status"></div>
+            <div class="chart-shell chart-large"><canvas id="psi142Chart" aria-label="Selected PSI-142 workbook Data ID chart"></canvas></div>
+            <div class="chart-shell chart-medium" id="psi142SecondaryWrap"><canvas id="psi142SecondaryChart" aria-label="Secondary PSI-142 series chart"></canvas></div>
+            <div id="psi142RawPreview"></div>
+            <div class="studio-footnote" id="psi142Note"></div>
+          </section>
+        </div>
+        <section class="panel source-bundle-panel">
+          <div class="eyebrow">INGESTED FILE REGISTER</div><h3>New source files in this build</h3>
+          <div id="ingestedFileList" class="ingested-file-list"></div>
+          <div class="caution-box">The workbook and CSV crosswalk reverse the ozone descriptions for Data IDs 1 and 2. The project preserves both source labels and does not choose one as correct. MFC setpoints remain volts; PSI-159 raw channel values remain uncalibrated.</div>
+        </section>
+        <div class="page-footer"><span>RAW FILES PRESERVED · DISPLAY SERIES DOWNSAMPLED</span><span>Derived JSON is for browser visualisation; refer to the source CSV / XLSX for full rows.</span></div>
+      </section>
+
+      <section class="page" id="page-digital-twin" aria-labelledby="digitalTwinTitle">
+        <div class="page-intro"><div class="eyebrow">INTERACTIVE SCIENTIFIC SCHEMATIC · 06</div><h1 id="digitalTwinTitle">3D combustion <em>laboratory.</em></h1><p>Explore an illustrative microgravity flame morphology with a rotatable 3D scene. This visual is conceptual and is not a validated physical simulation or an experiment-derived reconstruction.</p></div>
+        <div class="twin-layout">
+          <section class="panel twin-scene-panel">
+            <div class="twin-scene-top"><div><div class="eyebrow">VIRTUAL APPARATUS · SCHEMATIC</div><h3>Non-buoyant diffusion-flame field</h3></div><span class="live-pill"><i></i> ANIMATED MODEL</span></div>
+            <div class="twin-stage" id="twinStage"><div class="stage-reticle"></div><div id="twinCanvasHost" class="twin-canvas-host"></div><div class="stage-coordinate">0g* · CONCEPTUAL GEOMETRY<br>NOT TO SCALE</div><div class="stage-axis">X <span>Y</span> Z</div><div class="stage-hint">DRAG TO ORBIT · SCROLL TO ZOOM</div></div>
+            <div class="twin-controls"><button class="secondary-button" id="twinPause">Pause animation</button><button class="secondary-button" id="twinReset">Reset view</button><label class="studio-select">SCHEMATIC MODE<select id="twinMode"><option value="micro">Microgravity · spherical field</option><option value="earth">Earth gravity · buoyant plume</option></select></label></div>
+          </section>
+          <aside class="twin-aside">
+            <div class="panel twin-info"><div class="eyebrow">PHYSICAL INTERPRETATION</div><h3 id="twinModeTitle">Diffusion-led morphology</h3><p id="twinModeText">With buoyancy-driven natural convection strongly reduced, diffusion and imposed ventilation become more important. The displayed sphere is a schematic, not a universal flame shape.</p><div class="twin-legend"><span><i class="legend-blue"></i> Reaction-zone shell</span><span><i class="legend-cyan"></i> Conceptual tracer particles</span><span><i class="legend-white"></i> Reference geometry</span></div></div>
+            <div class="panel twin-info"><div class="eyebrow">WHAT THIS MODEL DOES NOT CLAIM</div><h3>Model validity boundary</h3><ul class="policy-list"><li>No combustion chemistry or CFD solver is running.</li><li>No flammability limit or extinction threshold is calculated.</li><li>The geometry is illustrative and condition-dependent.</li><li>Use published experiment records for quantitative evidence.</li></ul></div>
+            <div class="panel twin-info"><div class="eyebrow">RESEARCH BASIS</div><h3>Evidence-linked concept</h3><p>Microgravity flames, forced-flow sensitivity, and the roles of diffusion, conduction, and radiation are discussed in the supplied review.</p><a href="references/NASA_PSI_Microgravity_Combustion_Review_EN_With_Uploaded_Data.pdf#page=6" target="_blank" rel="noopener">Review · physical foundations ↗</a></div>
+          </aside>
+        </div>
+        <div class="page-footer"><span>3D VISUALISATION ≠ CFD</span><span>Animation communicates concepts; it does not replace measured data.</span></div>
+      </section>
+
+      <section class="page" id="page-assistant" aria-labelledby="assistantTitle">
+        <div class="page-intro"><div class="eyebrow">SOURCE-BOUNDED RETRIEVAL · 05</div><h1 id="assistantTitle">Evidence <em>intelligence.</em></h1><p>Ask a research question. The assistant searches the supplied review and PSI evidence files locally, then returns source-linked passages and limitations.</p></div>
+        <div class="assistant-layout">
+          <section class="panel assistant-panel">
+            <div class="assistant-top"><div class="assistant-avatar">✳</div><div><strong>LFAEA Local Evidence Assistant</strong><span id="modelStatus"><i class="status-dot"></i> Loading bundled project evidence…</span></div><div class="assistant-mode">STATIC EVIDENCE MODE</div></div>
+            <div class="assistant-intro"><div class="eyebrow">RESEARCH QUERY</div><h3>What would you like to investigate?</h3><p>Ask about an experiment, physical variable, research objective, source, or dataset limitation.</p></div>
+            <div class="suggested-queries" id="suggestedQueries">
+              <button>Which studies are strongest for solid-material flammability?</button>
+              <button>What does SAME-R contribute to smoke detection?</button>
+              <button>Explain the SPICE 52 vs 55 smoke-point discrepancy.</button>
+              <button>What is missing before PSI-159 flow can be calculated?</button>
+              <button>Which evidence is directly about lunar gravity?</button>
+            </div>
+            <form id="assistantForm" class="assistant-form"><textarea id="assistantQuestion" rows="3" placeholder="e.g. Which investigations are relevant to a pressurised lunar habitat, and what prevents direct transfer?" required></textarea><div class="assistant-form-foot"><span>Local search only · no server · no API key.</span><button class="primary-button" type="submit">Search evidence <span>→</span></button></div></form>
+            <div id="assistantAnswer" class="assistant-answer" aria-live="polite"><div class="empty-answer"><span>✳</span><strong>Awaiting a research question</strong><p>Start with a suggested question or enter your own. Matching source passages and page links will appear with the result.</p></div></div>
+          </section>
+          <aside class="assistant-side">
+            <div class="panel mini-panel"><div class="eyebrow">RETRIEVAL POLICY</div><h3>What the navigator will not do</h3><ul class="policy-list"><li>Invent missing values or calibrations.</li><li>Blend conflicting source labels into one answer.</li><li>Claim that microgravity equals lunar gravity.</li><li>Turn research summaries into operational fire instructions.</li><li>Present relevance rankings as risk probabilities.</li></ul></div>
+            <div class="panel mini-panel"><div class="eyebrow">STATIC MODE TRANSPARENCY</div><h3>Local evidence assistant</h3><p>The assistant searches the review, update note, and bundled PSI evidence index directly in the browser. It returns source-linked excerpts and keeps the original document pages available for verification.</p><p class="small-muted">No Node.js server, API key, external AI service, or user account is required. Replies are extractive search results, not newly generated model responses.</p></div>
+          </aside>
+        </div>
+        <div class="page-footer"><span>ANSWER → EVIDENCE → LIMITATION</span><span>Every response should be independently reviewable.</span></div>
+      </section>
+
+      <section class="page" id="page-method" aria-labelledby="methodTitle">
+        <div class="page-intro"><div class="eyebrow">REPRODUCIBILITY · EPISTEMIC CONTROL · 06</div><h1 id="methodTitle">Method &amp; <em>quality.</em></h1><p>The atlas is designed as a research instrument: every claim is classified, every comparison has gates, and every missing field has a typed state.</p></div>
+        <div class="method-grid">
+          <section class="panel method-card wide"><div class="eyebrow">01 · EVIDENCE STRENGTH</div><h3>Four evidence grades</h3><div class="grade-list">
+            <div class="grade-row"><span class="grade grade-a">A</span><div><strong>Direct published result</strong><p>Peer-reviewed paper or final NASA report presenting a direct result. Display conditions, methods, and citation.</p></div></div>
+            <div class="grade-row"><span class="grade grade-b">B</span><div><strong>Official investigation context</strong><p>NASA investigation page, engineering requirements, interim report, or supporting metadata. Do not present as a peer-reviewed conclusion.</p></div></div>
+            <div class="grade-row"><span class="grade grade-c">C</span><div><strong>Traceable reanalysis</strong><p>Derived or reprocessed result from an uploaded dataset. Show method, script version, original file, and limitations.</p></div></div>
+            <div class="grade-row"><span class="grade grade-d">D</span><div><strong>Interpretation / hypothesis</strong><p>Physical interpretation or proposed design concept not directly measured. Label it as an interpretation, not an experimental finding.</p></div></div>
+          </div><p class="small-muted">Evidence grade describes evidence type, not certainty. A grade-A paper can still have narrow conditions and measurement uncertainty.</p></section>
+          <section class="panel method-card"><div class="eyebrow">02 · PRIORITISATION MODEL</div><h3>Explainable ranking</h3><div class="formula"><div><span>Scenario relevance</span><b>60%</b></div><div class="formula-bar"><i style="width:60%"></i></div><div><span>Evidence type</span><b>20%</b></div><div class="formula-bar"><i style="width:20%"></i></div><div><span>Data coverage</span><b>15%</b></div><div class="formula-bar"><i style="width:15%"></i></div><div><span>Metadata completeness</span><b>5%</b></div><div class="formula-bar"><i style="width:5%"></i></div></div><div class="formula-equation">Priority = 0.60R + 0.20E + 0.15D + 0.05M</div><p class="small-muted">R, E, D, and M are normalised editorial inputs. A score is a triage aid, not a model output, flammability limit, or safety risk.</p></section>
+          <section class="panel method-card"><div class="eyebrow">03 · COMPARABILITY GATES</div><h3>Conditions travel together</h3><div class="condition-tags"><span>Gravity</span><span>Pressure</span><span>O₂ fraction</span><span>Inert gas</span><span>Flow speed</span><span>Flow direction</span><span>Fuel / material</span><span>Geometry</span><span>Instrument</span><span>Measurand / unit</span></div><p class="small-muted">If a critical field is unknown, missing, or not calibrated, the comparison is downgraded or blocked for quantitative interpretation.</p></section>
+          <section class="panel method-card wide"><div class="eyebrow">04 · DATA LINEAGE</div><h3>Typed missingness and provenance</h3><div class="lineage-grid"><div><b>Not measured</b><p>The experiment did not record the variable.</p></div><div><b>Not uploaded</b><p>The data may exist but was absent from the supplied package.</p></div><div><b>Not defined</b><p>A column / channel has no verified measurand or unit.</p></div><div><b>Not calibrated</b><p>A conversion cannot be reproduced from the available calibration package.</p></div><div><b>Conflicting labels</b><p>Two source files disagree; both descriptions remain preserved.</p></div><div><b>Not computable</b><p>The requested derived value is withheld until required inputs are available.</p></div></div></section>
+        </div>
+        <div class="section-heading compact-heading"><div><div class="eyebrow">REVIEW QUEUE</div><h2>Open data-quality issues</h2></div><span class="section-note">Issues surfaced from the uploaded package and official source cross-check.</span></div>
+        <div id="auditList" class="audit-list"></div>
+        <div class="panel research-boundary"><div class="boundary-mark">∴</div><div><div class="eyebrow">SCIENTIFIC SCOPE</div><h3>What the atlas can responsibly claim</h3><p>It can organise published findings, compare documented conditions, compute descriptive statistics from available files, and identify where evidence is incomplete. It cannot certify a material, predict a crewed-spacecraft emergency, or replace vehicle-specific procedures and engineering authority.</p></div></div>
+        <section class="panel ai-architecture-panel">
+          <div class="eyebrow">05 · AI RESEARCH ARCHITECTURE</div><h3>Static evidence retrieval with traceable context</h3>
+          <div class="ai-architecture-flow"><div><b>01 · Source ingestion</b><span>Review PDF · Update note · PSI CSV / XLSX · Camera metadata</span></div><i>→</i><div><b>02 · Local evidence index</b><span>Page-anchored chunks · dataset facts · BM25 retrieval</span></div><i>→</i><div><b>03 · Local retrieval</b><span>In-browser keyword ranking · source-linked excerpts</span></div><i>→</i><div><b>04 · Human review</b><span>Source trail · limitations · independent verification</span></div></div>
+          <p class="small-muted">The static assistant does not call an online language model, search NASA PSI live, or run CFD. It ranks the bundled evidence passages in the browser and returns excerpts with source links. This is retrieval, not generative AI.</p>
+        </section>
+        <div class="section-heading compact-heading"><div><div class="eyebrow">SOURCE REGISTER</div><h2>References &amp; source documents</h2></div><button class="text-link" id="openSourcesInline">Open full register ↗</button></div>
+        <div class="source-document-grid"><a class="source-document" href="references/NASA_PSI_Microgravity_Combustion_Review_EN_With_Uploaded_Data.pdf" target="_blank"><span class="doc-type">PDF · 39 PAGES</span><strong>Combustion Physics, Thermodynamics, and Smoke Aerosols in Space Environments</strong><small class="source-disclaimer">This document is solely my personal effort.</small><b>Open document ↗</b></a><a class="source-document" href="references/NASA_PSI_Research_Update_Note_EN.pdf" target="_blank"><span class="doc-type">PDF · 2 PAGES</span><strong>NASA PSI Research Update Note</strong><small>Supplied corrections and selected newly available files</small><b>Open document ↗</b></a></div>
+        <div class="page-footer"><span>TRACEABILITY IS A FEATURE, NOT AN APPENDIX</span><span>References verified against NASA / PSI pages on 15 Nov 2026.</span></div>
+      </section>
+
+      <footer class="global-footer"><span>© 2026 LFAEA · INDEPENDENT STUDENT RESEARCH PROTOTYPE</span><span>Built for critical reading, not operational control.</span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head"><div><div class="eyebrow" id="modalEyebrow">EVIDENCE RECORD</div><h2 id="modalTitle">Investigation details</h2></div><button class="modal-close" id="modalClose" aria-label="Close dialog">×</button></div>
+      <div id="modalBody" class="modal-body"></div>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script defer src="motion-enhancements.js"></script>
+</body>
+</html>
